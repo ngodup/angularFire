@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "book-834db": {
+      "hosting": {
+        "fireApps": [
+          "book-834db"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "book-834db"
+  }
+}

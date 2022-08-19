@@ -1,0 +1,75 @@
+<div class="container">
+  <section>
+    <h4>Search firbase record</h4>
+    <div class="row grid-title">
+      <div class="col-3 col-md-3">
+        <div class="form-group">
+          <label>Book Name</label>
+          <input
+            class="form-control"
+            name="name"
+            #name="ngModel"
+            [(ngModel)]="searchParams.name"
+            placeholder="Book Name"
+            required
+          />
+        </div>
+      </div>
+      <div class="col-3 col-md-3">
+        <div class="form-group">
+          <label>Book Genre</label>
+          <input
+            class="form-control"
+            name="gener"
+            #gener="ngModel"
+            [(ngModel)]="searchParams.genre"
+            placeholder="Book Genre"
+            required
+          />
+        </div>
+      </div>
+      <div class="col-3 col-md-3">
+        <div class="form-group">
+          <label>Book Author</label>
+          <input
+            class="form-control"
+            name="price"
+            #price="ngModel"
+            [(ngModel)]="searchParams.author"
+            placeholder="Book author"
+            required
+          />
+        </div>
+      </div>
+      <div class="col-3 col-md-3">
+        <button class="btn btn-primary" (click)="onSearchBook()">Search</button>
+      </div>
+    </div>
+  </section>
+  <section *ngIf="books">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Author</th>
+          <th scope="col">Genres</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <div *ngIf="!isSearchEmpty; else conditionFalse">
+        <tbody>
+          <tr *ngFor="let book of books; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ book.name }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.genre }}</td>
+            <td>{{ book.price }}</td>
+          </tr>
+        </tbody>
+      </div>
+    </table>
+
+    <ng-template #conditionFalse> Search result not found ! </ng-template>
+  </section>
+</div>
